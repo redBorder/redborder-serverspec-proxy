@@ -1,2 +1,2 @@
 # redborder-serverspec-proxy
-Tests redborder-proxy
+Infrastructure integration testing for redborder-proxy
