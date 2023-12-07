@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'json'
 set :os, family: 'redhat', release: '9', arch: 'x86_64'
 
 service = 'f2k'
