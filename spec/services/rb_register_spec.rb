@@ -5,8 +5,7 @@ set :os, family: 'redhat', release: '9', arch: 'x86_64'
 
 service = 'rb-register'
 service_status = command("systemctl is-enabled #{service}").stdout.strip
-# Asumiendo que no hay un paquete específico para rb-register; ajusta si es necesario.
-packages = %w[...]
+packages = %w[rb-register]
 
 describe "Checking packages for #{service}..." do
   packages.each do |package|
