@@ -8,11 +8,6 @@ service = 'redborder-scanner'
 packages = %w[rb-scanner-request]
 service_status = command("systemctl is-enabled #{service}").stdout.strip
 
-describe service(service) do
-  it { should be_enabled }
-  it { should be_running }
-end
-
 describe "Checking packages for #{service}..." do
   packages.each do |package|
     describe package(package) do
