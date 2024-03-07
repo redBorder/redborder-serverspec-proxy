@@ -27,9 +27,18 @@ To run a specific test type, use the following command:
 rake spec:configuration
 ```
 
+To run a specific test in a spec file, better use tags:
+```
+rspec --tag tag_name
+```
+
 List of Available Rake Tasks:
 To view the list of available Rake tasks, use the following command:
 ```
 rake -T
 ```
 
+Tag a describe to run by specific command ie:
+```
+describe ("Any test for this"), :tagname do
+```
