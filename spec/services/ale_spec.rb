@@ -5,17 +5,24 @@ set :os, family: 'redhat', release: '9', arch: 'x86_64'
 
 service = 'redborder-ale'
 service_status = command("systemctl is-enabled #{service}").stdout.strip
-packages = %w[redborder-ale]
 
 describe "Checking #{service_status} service for #{service}..." do
-  describe service(service) do
-    if service_status == 'enabled'
-      it { should be_enabled }
-      it { should be_running }
-      expect(packages.installed?).to be true
-    elsif service_status == 'disabled'
-      it { should_not be_enabled }
-      it { should_not be_running }
+  describe package(service) do
+    before do
+      skip("#{service} is not installed, skipping...") unless package(service).installed?
+    end
+
+    describe service(service) do
+      if service_status == 'enabled'
+        it { should be_enabled }
+        it { should be_running }
+        it 'is expected to be installed' do
+          expect(package(package).installed?).to be true
+        end
+      elsif service_status == 'disabled'
+        it { should_not be_enabled }
+        it { should_not be_running }
+      end
     end
   end
 end
