@@ -32,20 +32,20 @@ end
 # service_status = service_status.strip
 
 # if service_status == 'enabled'
-  describe "Checking service_status service for #{service}..." do
-    describe service(service) do
-      it { should be_enabled }
-      it { should be_running }
-    end
+describe "Checking service_status service for #{service}..." do
+  describe service(service) do
+    it { should be_enabled }
+    it { should be_running }
+  end
 
-    describe file(config_file) do
-      it { should exist }
-      it { should be_file }
-    end
+describe file(config_file) do
+  it { should exist }
+  it { should be_file }
+end
 
-    describe port(port) do
-      it { should be_listening }
-    end
+describe port(port) do
+  it { should be_listening }
+end
 
     # describe 'Registered in consul' do
     #   service_json_cluster = command("curl -s #{api_endpoint}/catalog/service/#{serv_consul} | jq -c 'group_by(.ID)[]'")
@@ -60,8 +60,8 @@ end
     #     end
     #   end
     # end
-  end
-# end
+#   end
+end
 
 # if service_status == 'disabled'
 #   describe "Checking #{service_status} service for #{service}..." do
