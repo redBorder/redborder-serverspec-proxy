@@ -11,7 +11,7 @@ packages = %w[
 service = 'chef-client'
 config_file = '/etc/chef/client.rb'
 port = 4443
-serv_consul = 'erchef'
+# serv_consul = 'erchef'
 # api_endpoint = 'http://localhost:8500/v1'
 
 describe "Checking packages for #{service}..." do
@@ -32,7 +32,7 @@ end
 # service_status = service_status.strip
 
 # if service_status == 'enabled'
-  describe "Checking #{service_status} service for #{service}..." do
+  describe "Checking service_status service for #{service}..." do
     describe service(service) do
       it { should be_enabled }
       it { should be_running }
