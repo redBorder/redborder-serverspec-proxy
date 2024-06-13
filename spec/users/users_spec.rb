@@ -14,7 +14,7 @@ describe 'Checking only these users has login permission' do
   allowed_users = Set.new %w[root redborder]
   not_allowed_users = bash_users - allowed_users
 
-  it 'should only allow specified users to have login permissions' do
+  it 'This set is supposed to be empty' do
     expect(not_allowed_users).to be_empty
   end
 end
