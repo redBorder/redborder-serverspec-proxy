@@ -5,7 +5,6 @@ require 'set'
 set :os, family: 'redhat', release: '9', arch: 'x86_64'
 
 service = 'redborder-ale'
-
 is_package_installed = package('redborder-ale').installed?
 
 if is_package_installed
