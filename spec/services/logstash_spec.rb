@@ -26,6 +26,7 @@ end
 
 describe "Checking service status for #{service}..." do
   pipelines = command("knife node show #{HOSTNAME} --attribute default.pipelines -F json").stdout.strip
+  pipelines = '{}' if pipelines == ''
   parsed_pipelines = JSON.parse(pipelines)
 
   if parsed_pipelines.empty? || parsed_pipelines.nil?
