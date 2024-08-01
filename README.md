@@ -19,7 +19,7 @@ Optional parameters:
 * LOGIN_PASSWORD: Password for SSH connection to the test machine.
 Example with optional parameters:
 ```
-TARGET_HOST="10.1.209.40" LOGIN_USERNAME="root" LOGIN_PASSWORD="redborder" rake spec
+TARGET_HOST="10.0.209.40" LOGIN_USERNAME="root" LOGIN_PASSWORD="redborder" rake spec
 ```
 
 To run a specific test type, use the following command:
