@@ -3,16 +3,18 @@
 require 'spec_helper'
 set :os, family: 'redhat', release: '9', arch: 'x86_64'
 
-service = 'redborder-ale'
+service = pkg = 'redborder-ale'
 service_status = command("systemctl is-enabled #{service}").stdout.strip
-packages = %w[redborder-ale]
-
+if service_status == 'enabled'
+  describe package(pkg) do
+    it { should be_installed }
+  end
+end
 describe "Checking #{service_status} service for #{service}..." do
   describe service(service) do
     if service_status == 'enabled'
       it { should be_enabled }
       it { should be_running }
-      expect(packages.installed?).to be true
     elsif service_status == 'disabled'
       it { should_not be_enabled }
       it { should_not be_running }
