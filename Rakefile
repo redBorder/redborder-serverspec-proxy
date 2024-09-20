@@ -7,7 +7,7 @@ task :spec => "spec:all"
 namespace :spec do
   host = ENV['TARGET_HOST'] || '10.0.209.40'
 
-  task :all => [:services, :configuration]
+  task :all => [:services, :configuration, :users]
 
   desc 'run configuration tests'
   RSpec::Core::RakeTask.new(:configuration) do |t|
@@ -20,6 +20,13 @@ namespace :spec do
   RSpec::Core::RakeTask.new(:services) do |t|
     puts "Running service tests on #{host} ..."
     t.pattern = "spec/services/*_spec.rb"
+    t.rspec_opts = "--format documentation"  # O "--format progress"
+  end
+
+  desc 'run service tests'
+  RSpec::Core::RakeTask.new(:users) do |t|
+    puts "Running service tests on #{host} ..."
+    t.pattern = "spec/users/*_spec.rb"
     t.rspec_opts = "--format documentation"  # O "--format progress"
   end
 end
