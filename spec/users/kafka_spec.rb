@@ -3,7 +3,8 @@
 require 'spec_helper'
 set :os, family: 'redhat', release: '9', arch: 'x86_64'
 
-pkg = usr = 'kafka'
+pkg = 'redborder-kafka'
+usr = 'kafka'
 describe user(usr) do
   before(:all) do
     # Depends on the existence of any sensor. 
