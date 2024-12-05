@@ -41,6 +41,7 @@ describe 'Check if not allowed open ports in public zone are empty' do
 
   it 'should not have any not allowed open ports in public zone' do
     unless not_allowed_open_public.empty?
+      # better to skip the test than to fail, to not block the build
       skip "Not allowed open ports in public zone: #{not_allowed_open_public.to_a.join(', ')}"
     end
     expect(not_allowed_open_public).to be_empty
