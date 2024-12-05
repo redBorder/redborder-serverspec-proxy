@@ -16,21 +16,21 @@ end
 
 describe 'Check if not allowed open ports in public zone are empty' do
   valid_public_ports = Set.new [
-    '443/tcp',    #(HTTPS)
-    #We don't know why this should be open. Remove?. Found references in our code mention pfring and snort
-    # '5353/udp',   #(mDNS / Serf)
-    '514/tcp',    #(rsyslogd)
-    '514/udp',    #(rsyslogd)
-    '2056/tcp',   #(n2klocd)
-    '2057/tcp',   #(n2klocd)
-    '2058/tcp',   #(n2klocd)
-    '161/udp',    #(snmp)
-    '162/udp',    #(snmp)
-    '2055/udp',   #(f2k)
-    '6343/udp',   #(sfacctd/pmacctd)
-    '1812/udp',   #(freeradius)
-    '1813/udp',   #(freeradius)
-    '7779/tcp',   #(rb-ale)
+    '443/tcp',    # (HTTPS)
+    # We don't know why this should be open. Remove?. Found references in our code mention pfring and snort
+    # '5353/udp',   # (mDNS / Serf)
+    '514/tcp',    # (rsyslogd)
+    '514/udp',    # (rsyslogd)
+    '2056/tcp',   # (n2klocd)
+    '2057/tcp',   # (n2klocd)
+    '2058/tcp',   # (n2klocd)
+    '161/udp',    # (snmp)
+    '162/udp',    # (snmp)
+    '2055/udp',   # (f2k)
+    '6343/udp',   # (sfacctd/pmacctd)
+    '1812/udp',   # (freeradius)
+    '1813/udp',   # (freeradius)
+    '7779/tcp',   # (rb-ale)
   ]
 
   open_public = command('firewall-cmd --zone=public --list-ports')
