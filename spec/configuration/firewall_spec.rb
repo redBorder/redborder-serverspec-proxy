@@ -10,13 +10,13 @@ describe 'Check zones are defined' do
     it { should exist }
     it { should be_owned_by 'root' }
     it { should be_grouped_into 'root' }
-  # it { should be_mode 600 } # Ensures file is readable and writable by root only
+    # it { should be_mode 600 } # Ensures file is readable and writable by root only
   end
 end
 
 describe 'Check if not allowed open ports in public zone are empty' do
   valid_public_ports = Set.new [
-    '443/tcp',    # (HTTPS)
+    '443/tcp', # (HTTPS)
     # We don't know why this should be open. Remove?. Found references in our code mention pfring and snort
     # '5353/udp',   # (mDNS / Serf)
     '514/tcp',    # (rsyslogd)
@@ -30,7 +30,7 @@ describe 'Check if not allowed open ports in public zone are empty' do
     '6343/udp',   # (sfacctd/pmacctd)
     '1812/udp',   # (freeradius)
     '1813/udp',   # (freeradius)
-    '7779/tcp',   # (rb-ale)
+    '7779/tcp'    # (rb-ale)
   ]
 
   open_public = command('firewall-cmd --zone=public --list-ports')
