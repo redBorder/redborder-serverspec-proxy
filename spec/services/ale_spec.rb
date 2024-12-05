@@ -6,7 +6,7 @@ require 'set'
 set :os, family: 'redhat', release: '9', arch: 'x86_64'
 
 service = pkg = 'redborder-ale'
-
+port = 7779
 describe "Checking packages for #{service}..." do
   describe package(pkg) do
     before do
@@ -21,13 +21,22 @@ end
 
 service_status = command("systemctl is-enabled #{service}").stdout.strip
 describe "Checking #{service_status} service for #{service}..." do
-  describe service(service) do
-    if service_status == 'enabled'
+  if service_status == 'enabled'
+    describe service(service) do
       it { should be_enabled }
       it { should be_running }
-    elsif service_status == 'disabled'
+    end
+    # describe port(port) do
+    #   it { should be_listening }
+    # end
+
+  elsif service_status == 'disabled'
+    describe service(service) do
       it { should_not be_enabled }
       it { should_not be_running }
     end
+    # describe port(port) do
+    #   it { should_not be_listening }
+    # end
   end
 end
