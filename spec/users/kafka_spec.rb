@@ -7,7 +7,7 @@ pkg = 'redborder-kafka'
 usr = 'kafka'
 describe user(usr) do
   before(:all) do
-    # Depends on the existence of any sensor. 
+    # Depends on the existence of any sensor.
     # After installation, there is no sensor
     skip("Package #{pkg} is not installed") unless package(pkg).installed?
   end

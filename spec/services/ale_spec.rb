@@ -6,7 +6,7 @@ require 'set'
 set :os, family: 'redhat', release: '9', arch: 'x86_64'
 
 service = pkg = 'redborder-ale'
-port = 7779
+# port = 7779
 describe "Checking packages for #{service}..." do
   describe package(pkg) do
     before do
