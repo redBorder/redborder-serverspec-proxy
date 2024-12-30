@@ -5,7 +5,7 @@ require 'json'
 set :os, family: 'redhat', release: '9', arch: 'x86_64'
 
 packages = %w[
-  cookbook-chef-server
+  redborder-chef-client
 ]
 
 service = 'chef-client'
@@ -35,5 +35,4 @@ describe "Checking service_status service for #{service}..." do
     it { should exist }
     it { should be_file }
   end
-
 end
