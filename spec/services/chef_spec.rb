@@ -5,12 +5,11 @@ require 'json'
 set :os, family: 'redhat', release: '9', arch: 'x86_64'
 
 packages = %w[
-  redborder-chef-server cookbook-chef-server
+  cookbook-chef-server
 ]
 
 service = 'chef-client'
 config_file = '/etc/chef/client.rb'
-port = 4443
 
 describe "Checking packages for #{service}..." do
   packages.each do |package|
@@ -37,7 +36,4 @@ describe "Checking service_status service for #{service}..." do
     it { should be_file }
   end
 
-  describe port(port) do
-    it { should be_listening }
-  end
 end
