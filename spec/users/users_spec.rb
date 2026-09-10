@@ -12,7 +12,7 @@ describe 'Checking only these users has login permission' do
   bash_users.map! { |p| p.split(':').first }
   bash_users = Set.new bash_users
 
-  allowed_users = Set.new %w[root redborder]
+  allowed_users = Set.new %w[root redborder redborder-net-tools]
   not_allowed_users = bash_users - allowed_users
 
   it 'This set is supposed to be empty' do
