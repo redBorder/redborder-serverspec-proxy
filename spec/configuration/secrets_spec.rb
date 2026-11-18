@@ -3,10 +3,10 @@
 require 'spec_helper'
 set :os, family: 'redhat', release: '9', arch: 'x86_64'
 
-# LINCE/CCN: no credentials or keys in plaintext on persistent storage (rb-common::harden_secrets)
+# No credentials or keys in plaintext on persistent storage (rb-common::harden_secrets)
 
 describe 'Memory stays off disk' do
-  # Sensors may have no swap at all; any swap there is must be the encrypted /dev/mapper/swap
+  # sensors may have no swap at all
   describe command('swapon --show=NAME --noheadings') do
     its(:stdout) { should_not match(%r{^/dev/(sd|vd|nvme|mapper/rl)}) }
   end
@@ -15,12 +15,11 @@ describe 'Memory stays off disk' do
     its(:content) { should_not match(/resume=/) }
   end
 
-  # kdump may run, but must only save the kernel log, never a memory image
   describe command("grep '^core_collector ' /etc/kdump.conf 2>/dev/null || echo none") do
     its(:stdout) { should match(/\A(core_collector makedumpfile --dump-dmesg|none)\n\z/) }
   end
 
-  describe command('find /var/crash -name vmcore -size +10M 2>/dev/null | wc -l') do # a kernel log is fine, a RAM image is not
+  describe command('find /var/crash -name vmcore -size +10M 2>/dev/null | wc -l') do
     its(:stdout) { should match(/^0$/) }
   end
 
