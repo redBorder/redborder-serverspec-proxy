@@ -3,7 +3,7 @@
 require 'spec_helper'
 set :os, family: 'redhat', release: '9', arch: 'x86_64'
 
-pkg = usr = 'logstash'
+pkg = usr = 'redborder-vortex'
 describe user(usr) do
   before(:all) do
     # Depensd on the existence of the pipelines; equivalent to any sensor
